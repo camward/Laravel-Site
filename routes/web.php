@@ -11,9 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// группа маршрутов, для построеня REST-запросов
+Route::resource('/', 'IndexController', [
+                                            'only'=>['index'], // какие методы использовать
+                                            'names'=>[
+                                                'index'=>'home' // псевдонимы для методов
+                                            ]
+                                        ]);
 
 Auth::routes();
 
