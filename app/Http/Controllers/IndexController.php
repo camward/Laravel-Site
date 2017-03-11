@@ -5,12 +5,12 @@ namespace Corp\Http\Controllers;
 use Illuminate\Http\Request;
 use Corp\Repositories\SlidersRepository;
 use Corp\Repositories\PortfoliosRepository;
-use Corp\Repositories\ArticlesRepository;
+use Corp\Repositories\ArticleRepository;
 use Config;
 
 class IndexController extends SiteController
 {
-    public function __construct(SlidersRepository $s_rep, PortfoliosRepository $p_rep, ArticlesRepository $a_rep)
+    public function __construct(SlidersRepository $s_rep, PortfoliosRepository $p_rep, ArticleRepository $a_rep)
     {
         parent::__construct(new \Corp\Repositories\MenusRepository(new \Corp\Menu));
         $this->s_rep = $s_rep;
