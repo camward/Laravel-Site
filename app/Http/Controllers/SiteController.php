@@ -14,9 +14,12 @@ class SiteController extends Controller
     protected $m_rep; // меню
     protected $template; // шаблон
     protected $vars = []; // переменные передаваемые в шаблон
-    protected $bar = FALSE; // наличие колонки
+    protected $bar = 'no'; // наличие колонки
     protected $contentRightBar = FALSE; // правая колонка
     protected $contentLeftBar = FALSE; // левая колонка
+    protected $keywords; // ключемые слова
+    protected $meta_desc; // описание
+    protected $title; // title
 
     public function __construct(MenusRepository $m_rep)
     {
@@ -31,6 +34,15 @@ class SiteController extends Controller
             $rightBar = view(env('THEME').'.rightBar')->with('content_rightBar', $this->contentRightBar)->render();
             $this->vars = array_add($this->vars,'rightBar',$rightBar);
         }
+        $this->vars = array_add($this->vars,'bar',$this->bar);
+
+        $this->vars = array_add($this->vars,'keywords',$this->keywords);
+        $this->vars = array_add($this->vars,'meta_desc',$this->meta_desc);
+        $this->vars = array_add($this->vars,'title',$this->title);
+
+        $footer = view(env('THEME').'.footer')->render();;
+        $this->vars = array_add($this->vars,'footer',$footer);
+
         return view($this->template)->with($this->vars);
     }
 
