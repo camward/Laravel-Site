@@ -58,6 +58,9 @@ class ArticlesController extends SiteController
 
     public function show($alias = FALSE) {
         $article = $this->a_rep->one($alias,['comments' => TRUE]);
+        if($article) {
+            $article->img = json_decode($article->img);
+        }
         $content = view(env('THEME').'.article_content')->with('article',$article)->render();
         $this->vars = array_add($this->vars,'content',$content);
         $comments = $this->getComments(config('settings.recent_comments'));
