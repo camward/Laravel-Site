@@ -28,6 +28,7 @@
     <title>{{ $title or 'Pink' }}</title>
     <meta name="description" content="{{ isset($meta_desc) ? $meta_desc : '' }}" />
     <meta name="keywords" content="{{ isset($keywords) ? $keywords : '' }}" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- [favicon] begin -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset(env('THEME')) }}/images/favicon.ico" />
