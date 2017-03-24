@@ -1,10 +1,10 @@
 <?php
 
-namespace Corp\Http\Controllers;
+namespace Corp\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 
-class AdminArticlesController extends Controller
+class ArticlesController extends AdminController
 {
     /**
      * Display a listing of the resource.

@@ -1,13 +1,13 @@
 <?php
 
-namespace Corp\Http\Controllers;
+namespace Corp\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 
 use Auth;
 use Menu;
 
-class AdminAdminController extends \Corp\Http\Controllers\Controller
+class AdminController extends \Corp\Http\Controllers\Controller
 {
     protected $p_rep;
     protected $a_rep;
