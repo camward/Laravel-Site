@@ -2,6 +2,8 @@
 
 namespace Corp\Http\Controllers\Auth;
 
+use Corp\User;
+use Validator;
 use Corp\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -25,7 +27,8 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $username = 'login';
+    protected $redirectTo = '/admin';
 
     /**
      * Create a new controller instance.
@@ -35,5 +38,19 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'logout']);
+    }
+
+    public function showLoginForm()
+    {
+        return view(env('THEME').'.login');
+    }
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:6|confirmed',
+        ]);
     }
 }
