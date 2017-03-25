@@ -21,11 +21,13 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Route $router)
     {
-        //
-
-        parent::boot();
+        $router->pattern('alias','[\w-]+');
+        parent::boot($router);
+        $router->bind('articles', function ($value) {
+            return \Corp\Article::where('alias',$value)->first();
+        });
     }
 
     /**
