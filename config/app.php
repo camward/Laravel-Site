@@ -177,6 +177,7 @@ return [
         Corp\Providers\EventServiceProvider::class,
         Corp\Providers\RouteServiceProvider::class,
         'Lavary\Menu\ServiceProvider',
+        Collective\Html\HtmlServiceProvider::class,
 
     ],
 
@@ -227,6 +228,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Menu' => 'Lavary\Menu\Facade',
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
     ],
 
 ];
