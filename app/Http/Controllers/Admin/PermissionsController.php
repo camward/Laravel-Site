@@ -63,7 +63,13 @@ class PermissionsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $result = $this->per_rep->changePermissions($request);
+
+        if(is_array($result) && !empty($result['error'])) {
+            return back()->with($result);
+        }
+
+        return back()->with($result);
     }
 
     /**
