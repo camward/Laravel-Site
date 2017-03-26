@@ -45,6 +45,7 @@ Route::group(['prefix' => 'admin','middleware'=> 'auth'],function() {
     Route::get('/',['uses' => 'Admin\IndexController@index','as' => 'adminIndex']);
     Route::resource('/articles','Admin\ArticlesController');
     Route::resource('/permissions','Admin\PermissionsController');
+    Route::resource('/menus','Admin\MenusController');
 });
 
 Route::get('articles/cat/{cat_alias?}', ['uses'=>'ArticlesController@index','as'=>'articlesCat']);
